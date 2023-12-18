@@ -1,52 +1,158 @@
-import AcmeLogo from '@/app/ui/acme-logo';
-import { lusitana } from '@/app/ui/fonts';
-import styles from '@/app/ui/home.module.css';
-import { ArrowRightIcon } from '@heroicons/react/24/outline';
-import Image from 'next/image';
 import Link from 'next/link';
+import {
+  Chip,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  Input,
+} from '@mui/material';
+//  import { CardTitle } from "@/components/ui/card"
+//  import { AvatarImage, Avatar } from "@/components/ui/avatar"
 
-export default function Page() {
+const links = [
+  { name: 'DJs', href: '/talent/djs' },
+  { name: 'Video', href: '/talent/video' },
+  { name: 'DJs', href: '/talent/djs' },
+  { name: 'DJs', href: '/talent/djs' },
+  { name: 'DJs', href: '/talent/djs' },
+  { name: 'DJs', href: '/talent/djs' },
+];
+
+export default function Component() {
   return (
-    <main className="flex min-h-screen flex-col p-6">
-      <div className="flex h-20 shrink-0 items-end rounded-lg bg-blue-500 p-4 md:h-52">
-        <AcmeLogo />
-      </div>
-      <div className="mt-4 flex grow flex-col gap-4 md:flex-row">
-        <div className="flex flex-col justify-center gap-6 rounded-lg bg-gray-50 px-6 py-10 md:w-2/5 md:px-20">
-          <div className={styles.shape}></div>
-          <p
-            className={`text-xl text-gray-800 md:text-3xl md:leading-normal ${lusitana.className} antialiased`}
-          >
-            <strong>Welcome to Acme.</strong> This is the example for the{' '}
-            <a href="https://nextjs.org/learn/" className="text-blue-500">
-              Next.js Learn Course
-            </a>
-            , brought to you by Vercel.
-          </p>
-          <Link
-            href="/login"
-            className="flex items-center gap-5 self-start rounded-lg bg-blue-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-400 md:text-base"
-          >
-            <span>Log in</span> <ArrowRightIcon className="w-5 md:w-6" />
+    <div className="flex min-h-screen flex-col">
+      <main className="flex-1 gap-8 p-6">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <Card>
+            <CardHeader
+              title={
+                <div className="flex items-center justify-between">
+                  <p>DJs</p>
+                  <Chip label="Most Searched" />
+                </div>
+              }
+            />
+
+            <CardContent>
+              <Button className="mt-4" size="sm" href={'talent/djs'}>
+                View All
+              </Button>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader
+              title={
+                <div className="flex items-center justify-between">
+                  <p>Bartenders</p>
+                  <Chip label="Most Searched" />
+                </div>
+              }
+            />
+            <CardContent>
+              <Button className="mt-4" size="sm" href={'talent/bartenders'}>
+                View All
+              </Button>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader
+              title={
+                <div className="flex items-center justify-between">
+                  <p>Dancers</p>
+                </div>
+              }
+            />
+            <CardContent>
+              <Button className="mt-4" size="sm" href={'talent/dancers'}>
+                View All
+              </Button>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader
+              title={
+                <div className="flex items-center justify-between">
+                  <p>Photographers</p>
+                </div>
+              }
+            />
+            <CardContent>
+              <Button className="mt-4" size="sm" href={'talent/photographers'}>
+                View All
+              </Button>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader
+              title={
+                <div className="flex items-center justify-between">
+                  <p>Musicians</p>
+                </div>
+              }
+            />
+            <CardContent>
+              <Button className="mt-4" size="sm" href={'talent/musicians'}>
+                View All
+              </Button>
+            </CardContent>
+          </Card>{' '}
+          <Card>
+            <CardHeader
+              title={
+                <div className="flex items-center justify-between">
+                  <p>Videographers</p>
+                </div>
+              }
+            />
+            <CardContent>
+              <Button className="mt-4" size="sm" href={'talent/videographers'}>
+                View All
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+      </main>
+      <footer className="flex items-center justify-between bg-gray-200 p-6">
+        <div className="flex items-center space-x-4">
+          <StoreIcon className="h-6 w-6" />
+          <span className="text-lg font-semibold">PartyStarters</span>
+        </div>
+        <div className="flex items-center space-x-4">
+          <Link className="text-gray-600 hover:underline" href="#">
+            About Us
+          </Link>
+          <Link className="text-gray-600 hover:underline" href="#">
+            Contact
+          </Link>
+          <Link className="text-gray-600 hover:underline" href="#">
+            Privacy Policy
           </Link>
         </div>
-        <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
-          <Image
-            src="/hero-desktop.png"
-            width={1000}
-            height={760}
-            className="hidden md:block"
-            alt="Screenshots of the dashboard project showing desktop version"
-          />
-          <Image
-            src="/hero-mobile.png"
-            width={560}
-            height={620}
-            className="block md:hidden"
-            alt="Screenshots of the dashboard project showing mobile version"
-          />
-        </div>
-      </div>
-    </main>
+      </footer>
+    </div>
+  );
+}
+
+function StoreIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7" />
+      <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+      <path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4" />
+      <path d="M2 7h20" />
+      <path d="M22 7v3a2 2 0 0 1-2 2v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12v0a2 2 0 0 1-2-2V7" />
+    </svg>
   );
 }
