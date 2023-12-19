@@ -5,7 +5,7 @@ import { Metadata } from 'next';
 import { Box, Button, Card, CardContent, CardHeader } from '@mui/material';
 
 export const metadata: Metadata = {
-  title: 'Edit Invoice',
+  title: 'Profile',
 };
 
 export default async function Page({ params }: { params: { id: string } }) {
@@ -24,7 +24,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   const capitalizedTalent = firstLetterCap + remainingLetters;
 
   return (
-    <main className="flex-1 py-10 pl-6">
+    <main className="flex-1 p-10">
       <Breadcrumbs
         breadcrumbs={[
           {

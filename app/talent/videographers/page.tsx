@@ -15,9 +15,11 @@ export default async function Page() {
   }
 
   return (
-    <div>
-      <Typography variant="h2">All Videographers</Typography>
-      <ImageList>
+    <div className="p-10">
+      <Typography variant="h2" className="pb-6 text-white">
+        All Videographers
+      </Typography>
+      <ImageList cols={3} gap={8}>
         {allVideogs.map(
           (hire: {
             id: string;

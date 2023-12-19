@@ -113,7 +113,7 @@ export default function Component() {
           </Card>
         </div>
       </main>
-      <footer className="flex items-center justify-between bg-gray-200 p-6">
+      <footer className="flex items-center justify-between p-6">
         <div className="flex items-center space-x-4">
           <StoreIcon className="h-6 w-6" />
           <span className="text-lg font-semibold">PartyStarters</span>
