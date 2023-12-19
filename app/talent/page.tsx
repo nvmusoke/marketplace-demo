@@ -16,7 +16,7 @@ export default async function Page() {
 
   return (
     <div className="p-10">
-      <Typography variant="h2" className="text-white">
+      <Typography variant="h2" className="pb-6 text-white">
         All Available Talent
       </Typography>
       <ImageList cols={3} gap={8}>
