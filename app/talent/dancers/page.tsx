@@ -15,9 +15,12 @@ export default async function Page() {
     notFound();
   }
   return (
-    <div>
-      <Typography variant="h2">Available Dancers</Typography>
-      <ImageList>
+    <div className="p-10">
+      <Typography variant="h2" className="pb-6 text-white">
+        Available Dancers
+      </Typography>
+      <ImageList cols={3} gap={8}>
+        {' '}
         {allDancers.map(
           (hire: {
             id: string;

@@ -5,7 +5,7 @@ import { Metadata } from 'next';
 import { Box, Button, Card, CardContent, CardHeader } from '@mui/material';
 
 export const metadata: Metadata = {
-  title: 'Edit Invoice',
+  title: 'Profile',
 };
 
 export default async function Page({ params }: { params: { id: string } }) {
@@ -24,7 +24,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   const capitalizedTalent = firstLetterCap + remainingLetters;
 
   return (
-    <main className="flex-1 py-10 pl-6">
+    <main className="flex-1 p-10">
       <Breadcrumbs
         breadcrumbs={[
           {
@@ -51,7 +51,11 @@ export default async function Page({ params }: { params: { id: string } }) {
             <p className="text-gray-500">{hireById.email}</p>
 
             <div className="mt-4">
-              <Button href={`mailto:${hireById.email}`}>Message</Button>
+              <Button
+                href={`mailto:${hireById.email}?subject=[PartyStarters] ${hireById.talent} gig&body=Hi ${hireById.name},%0D%0AAre you available [insert dates] for a ${hireById.talent} gig?"`}
+              >
+                Message
+              </Button>
             </div>
           </Card>
         </div>
