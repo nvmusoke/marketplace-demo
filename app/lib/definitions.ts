@@ -10,5 +10,6 @@ export type TalentType = {
   name: string;
   email: string;
   image_url: string;
+  bio: string;
   talent: string;
 };

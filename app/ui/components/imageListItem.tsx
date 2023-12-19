@@ -1,25 +1,11 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   ImageListItem,
   ImageListItemBar,
-  useTheme,
-  ThemeProvider,
-  createTheme,
 } from '@mui/material';
 
-const theme = createTheme({
-  components: {
-    MuiImageListItem: {
-      styleOverrides: {
-        img: {
-          maxWidth: '25rem',
-          maxHeight: '15rem',
-        },
-      },
-    },
-  },
-});
 
 export default function ImageListItems({
   hire,
@@ -32,14 +18,15 @@ export default function ImageListItems({
   };
 }) {
   return (
-    <ThemeProvider theme={theme}>
       <Link href={`/talent/${hire.id}`}>
         <ImageListItem>
-          <img
+          <Image
             src={hire.image_url}
             alt={hire.name}
             loading="lazy"
-            className={theme.img}
+            width={400}
+            height={240}
+            sizes="(max-height: 240px)"
           />
           <ImageListItemBar
             title={hire.name}
@@ -49,6 +36,5 @@ export default function ImageListItems({
           />
         </ImageListItem>
       </Link>
-    </ThemeProvider>
   );
 }
