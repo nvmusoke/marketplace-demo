@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
-import { ImageList, Typography } from '@mui/material';
+import ImageList from '@mui/material/ImageList';
+import Typography from '@mui/material/Typography';
 import { notFound } from 'next/navigation';
 import ImageListItems from '@/app/ui/components/imageListItem';
 import { fetchHireByTalent } from '@/app/lib/data';
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const [allPhotogs] = await Promise.all([fetchHireByTalent('photographer')]);
+  const allPhotogs = await fetchHireByTalent('photographer');
   if (!allPhotogs) {
     notFound();
   }
