@@ -51,7 +51,11 @@ export default async function Page({ params }: { params: { id: string } }) {
             <p className="text-gray-500">{hireById.email}</p>
 
             <div className="mt-4">
-              <Button href={`mailto:${hireById.email}?subject=[PartyStarters] ${hireById.talent} gig&body=Hi ${hireById.name},%0D%0AAre you available [insert dates] for a ${hireById.talent} gig?"`}>Message</Button>
+              <Button
+                href={`mailto:${hireById.email}?subject=[PartyStarters] ${hireById.talent} gig&body=Hi ${hireById.name},%0D%0AAre you available [insert dates] for a ${hireById.talent} gig?"`}
+              >
+                Message
+              </Button>
             </div>
           </Card>
         </div>
