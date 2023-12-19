@@ -11,8 +11,10 @@ export default function Header() {
       </Link>
       <div className="flex items-center space-x-4">
         <Search placeholder="Search" />
-        <Button variant="outlined">Sign In</Button>
-        <Button>Sign Up</Button>
+        <Button variant="outlined" className="border-white text-white">
+          Sign In
+        </Button>
+        <Button className="text-black">Sign Up</Button>
       </div>
     </header>
   );
