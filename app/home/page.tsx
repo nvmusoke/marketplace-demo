@@ -1,19 +1,12 @@
 import Link from 'next/link';
-import TitleCards from './ui/components/titleCards';
+import TitleCards from '../ui/components/titleCards';
+import Typography from '@mui/material/Typography';
 
 export default function Component() {
-  const titles = [
-    { name: 'DJs', popular: true },
-    { name: 'Bartenders', popular: true },
-    { name: 'Videographers', popular: false },
-    { name: 'Photographers', popular: false },
-    { name: 'Dancers', popular: false },
-    { name: 'Musicians', popular: false },
-  ];
-
   return (
     <div className="flex min-h-screen flex-col">
       <main className="flex-1 gap-8 p-6">
+        <Typography variant="h3" className='text-white'>Welcome Back!</Typography>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           <TitleCards />
         </div>
