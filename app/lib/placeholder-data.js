@@ -5,6 +5,12 @@ const users = [
     email: 'user@nextmail.com',
     password: '123456',
   },
+  {
+    id: '01e8b4e2-803c-498d-9e06-0919c1d08e0b',
+    name: 'Userisha',
+    email: 'email@email.com',
+    password: '123456',
+  },
 ];
 
 const talents = [
