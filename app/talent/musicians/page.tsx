@@ -12,7 +12,6 @@ export const metadata: Metadata = {
 export default async function Page() {
   const allMusicians = await fetchHireByTalent('musician');
 
-  console.log({ allMusicians });
   if (!allMusicians) {
     notFound();
   }
