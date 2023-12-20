@@ -83,3 +83,27 @@ export async function fetchHireById(id: string) {
     throw new Error('Failed to fetch hire by ID.');
   }
 }
+
+export async function fetchFilteredResults(query: string) {
+  noStore();
+  try {
+    const results = await sql<TalentType>`
+		SELECT
+		  talents.id,
+		  talents.name,
+		  talents.email,
+		  talents.image_url,
+      talents.talent
+		FROM talents
+		WHERE
+		  talents.name ILIKE ${`%${query}%`} OR
+      talents.email ILIKE ${`%${query}%`} OR
+      talents.talent ILIKE ${`%${query}%`}
+    `;
+
+    return results.rows;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch results.');
+  }
+}
