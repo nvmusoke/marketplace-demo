@@ -2,15 +2,6 @@ import Link from 'next/link';
 import TitleCards from './ui/components/titleCards';
 
 export default function Component() {
-  const titles = [
-    { name: 'DJs', popular: true },
-    { name: 'Bartenders', popular: true },
-    { name: 'Videographers', popular: false },
-    { name: 'Photographers', popular: false },
-    { name: 'Dancers', popular: false },
-    { name: 'Musicians', popular: false },
-  ];
-
   return (
     <div className="flex min-h-screen flex-col">
       <main className="flex-1 gap-8 p-6">
