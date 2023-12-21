@@ -14,7 +14,7 @@ export default function Component() {
   return (
     <div className="flex min-h-screen flex-col">
       <main className="flex-1 gap-8 p-6">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 pt-40 md:grid-cols-2 lg:grid-cols-3">
           <TitleCards />
         </div>
       </main>

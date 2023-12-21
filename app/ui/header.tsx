@@ -20,11 +20,13 @@ export default async function Header() {
         {!isLoggedIn ? (
           <>
             <Link href="/login">
-              <Button variant="outlined" className="border-white text-white">
-                Sign In
-              </Button>
+              <button className="rounded border border-solid border-white p-2 text-white hover:border-blue-800 hover:text-blue-800">
+                <div className="hidden md:block">Sign In</div>
+              </button>
             </Link>
-            <Button className="text-black">Sign Up</Button>
+            <button className="text-black hover:border-blue-800 hover:text-blue-800">
+              <div className="hidden md:block">Sign Up</div>
+            </button>
           </>
         ) : (
           <>
