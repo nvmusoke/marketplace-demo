@@ -26,18 +26,14 @@ export default function ImageListItems({
           loading="lazy"
           width={400}
           height={240}
-          sizes="(max-height: 240px)"
+          style={{ objectFit: 'contain', width: '400px', height: '240px' }}
         />
         <ImageListItemBar
           title={hire.name}
           subtitle={
             <>
               {isMainPage && <p> {hire.talent}</p>}
-              <Rating
-                value={hire.rating}
-                precision={0.5}
-                readOnly
-              />
+              <Rating value={hire.rating} precision={0.5} readOnly />
             </>
           }
           position="below"

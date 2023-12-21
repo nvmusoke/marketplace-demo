@@ -71,7 +71,7 @@ export default async function Page({ params }: { params: { id: string } }) {
               )}
 
               <Button
-                href={`mailto:${hireById.pseudo_email}?subject=[PartyStarters] ${hireById.talent} gig&body=Hi ${hireById.name},%0D%0AAre you available [insert dates] for a gig? I need a ${hireById.talent}`}
+                href={`mailto:${hireById.pseudo_email}?subject=[TheMove Makers] ${hireById.talent} gig&body=Hi ${hireById.name},%0D%0AAre you available [insert dates] for a gig? We're looking for a ${hireById.talent} for our event.`}
               >
                 Message
               </Button>

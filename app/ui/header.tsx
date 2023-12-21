@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 import Search from './search';
 import { cookies } from 'next/headers';
 import { signOut } from '@/auth';
@@ -11,7 +12,9 @@ export default async function Header() {
   return (
     <header className="flex items-center justify-between bg-gradient-to-r from-blue-500  to-violet-500 p-6 shadow-md">
       <Link href={isLoggedIn ? '/home' : '/'}>
-        <span className="ml-2 text-lg font-semibold">PartyStarters</span>
+        <Typography variant="h5" className="ml-2">
+          TheMove Makers
+        </Typography>
       </Link>
       <div className="flex items-center space-x-4">
         {!isLoggedIn ? (
