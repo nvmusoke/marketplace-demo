@@ -2,12 +2,12 @@ import Link from 'next/link';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Search from './search';
-import { cookies } from 'next/headers';
-import { signOut } from '@/auth';
+import { auth, signOut } from '@/auth';
 
 export default async function Header() {
-  const cookieStore = cookies();
-  const isLoggedIn = cookieStore.has('authjs.session-token');
+  const { user } = (await auth()) || {};
+
+  const isLoggedIn = user !== undefined;
 
   return (
     <header className="flex items-center justify-between bg-gradient-to-r from-blue-500  to-violet-500 p-6 shadow-md">

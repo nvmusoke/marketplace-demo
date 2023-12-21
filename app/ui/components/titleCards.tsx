@@ -7,9 +7,9 @@ import {
   CardMedia,
   Typography,
 } from '@mui/material';
-import { cookies } from 'next/headers';
+import { auth } from '@/auth';
 
-export default function TitleCards() {
+export default async function TitleCards() {
   const titles = [
     {
       name: 'DJs',
@@ -48,8 +48,10 @@ export default function TitleCards() {
       alt: 'Music background',
     },
   ];
-  const cookieStore = cookies();
-  const isLoggedIn = cookieStore.has('authjs.session-token');
+
+  const { user } = (await auth()) || {};
+
+  const isLoggedIn = user !== undefined;
 
   return titles.map(
     (title: { name: string; popular: boolean; image: string; alt: string }) => (
