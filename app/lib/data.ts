@@ -19,9 +19,9 @@ export async function fetchAllHires() {
     SELECT
      		  talents.id,
     		  talents.name,
-    		  talents.email,
      		  talents.image_url,
-          talents.talent
+          talents.talent,
+          talents.rating
     		FROM talents
     `;
 
@@ -40,17 +40,15 @@ export async function fetchHireByTalent(talent: string) {
     SELECT
       talents.id,
       talents.name,
-      talents.email,
       talents.image_url,
-      talents.bio,
-      talents.talent
+      talents.talent,
+      talents.rating
     FROM talents
     WHERE talents.talent = ${talent};
     `;
 
     const hireByTalent = data.rows;
 
-    console.log(hireByTalent);
     return hireByTalent;
   } catch (error) {
     console.error('Database Error:', error);
@@ -66,9 +64,12 @@ export async function fetchHireById(id: string) {
       talents.id,
       talents.name,
       talents.email,
+      talents.pseudo_email,
       talents.image_url,
       talents.bio,
-      talents.talent
+      talents.talent,
+      talents.external_link,
+      talents.rating
     FROM talents
     WHERE talents.id = ${id};
     `;
@@ -76,7 +77,6 @@ export async function fetchHireById(id: string) {
     const hireById = data.rows.map((hire) => ({
       ...hire,
     }));
-    console.log(hireById);
     return hireById[0];
   } catch (error) {
     console.error('Database Error:', error);
@@ -91,13 +91,12 @@ export async function fetchFilteredResults(query: string) {
 		SELECT
 		  talents.id,
 		  talents.name,
-		  talents.email,
 		  talents.image_url,
-      talents.talent
+      talents.talent,
+      talents.rating
 		FROM talents
 		WHERE
 		  talents.name ILIKE ${`%${query}%`} OR
-      talents.email ILIKE ${`%${query}%`} OR
       talents.talent ILIKE ${`%${query}%`}
     `;
 

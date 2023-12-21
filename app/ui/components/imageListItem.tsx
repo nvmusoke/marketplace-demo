@@ -2,17 +2,22 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ImageListItem, ImageListItemBar } from '@mui/material';
+import { Rating } from '@mui/material';
 
 export default function ImageListItems({
   hire,
+  isMainPage,
 }: {
   hire: {
     id: string;
     image_url: string;
     name: string;
     talent: string;
+    rating: number;
   };
+  isMainPage?: boolean;
 }) {
+  console.log({ hire });
   return (
     <Link href={`/talent/${hire.id}`}>
       <ImageListItem>
@@ -26,7 +31,17 @@ export default function ImageListItems({
         />
         <ImageListItemBar
           title={hire.name}
-          subtitle={<span> {hire.talent}</span>}
+          subtitle={
+            <>
+              {isMainPage && <p> {hire.talent}</p>}
+              <Rating
+                classname="mb-4"
+                value={hire.rating}
+                precision={0.5}
+                readOnly
+              />
+            </>
+          }
           position="below"
           className="text-white"
         />

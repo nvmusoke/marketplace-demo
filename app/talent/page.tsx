@@ -47,8 +47,9 @@ export default async function Page({
               image_url: string;
               name: string;
               talent: string;
+              rating: string;
             }) => (
-              <ImageListItems hire={hire} key={hire.id} />
+              <ImageListItems hire={hire} key={hire.id} isMainPage />
             ),
           )}
         </ImageList>

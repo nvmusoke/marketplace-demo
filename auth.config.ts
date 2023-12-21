@@ -9,13 +9,16 @@ export const authConfig = {
       const isLoggedIn = !!auth?.user;
       const isonTalentPage = nextUrl.pathname.startsWith('/talent');
       const isOnLoginPage = nextUrl.pathname.startsWith('/login');
+      const isOnHomePage = nextUrl.pathname.startsWith('/home');
 
-      console.log({ nextUrl });
       if (isonTalentPage) {
         if (isLoggedIn) return true;
         return false; // Redirect unauthenticated users to login page
       } else if (isLoggedIn && isOnLoginPage) {
         return Response.redirect(new URL('/home', nextUrl));
+      } else if (isOnHomePage) {
+        if (isLoggedIn) return true;
+        return false; // Redirect unauthenticated users to login page
       }
       return true;
     },

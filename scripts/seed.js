@@ -51,9 +51,12 @@ async function seedTalent(client) {
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
         email VARCHAR(255) NOT NULL,
+        pseudo_email VARCHAR(255) NOT NULL,
         image_url VARCHAR(255) NOT NULL,
         bio VARCHAR(255) NOT NULL,
-        talent VARCHAR(255) NOT NULL
+        talent VARCHAR(255) NOT NULL,
+        external_link VARCHAR(255),
+        rating DECIMAL(3,1) NOT NULL
       );
     `;
 
@@ -63,8 +66,8 @@ async function seedTalent(client) {
     const insertedTalent = await Promise.all(
       talents.map(
         (talent) => client.sql`
-        INSERT INTO talents (id, name, email, image_url, bio, talent)
-        VALUES (${talent.id}, ${talent.name}, ${talent.email}, ${talent.image_url}, ${talent.bio}, ${talent.talent})
+        INSERT INTO talents (id, name, email, pseudo_email, image_url, bio, talent, external_link, rating)
+        VALUES (${talent.id}, ${talent.name}, ${talent.email}, ${talent.pseudo_email}, ${talent.image_url}, ${talent.bio}, ${talent.talent}, ${talent.external_link}, ${talent.rating})
         ON CONFLICT (id) DO NOTHING;
       `,
       ),

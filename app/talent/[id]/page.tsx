@@ -2,7 +2,16 @@ import { fetchHireById, fetchHireByTalent } from '@/app/lib/data';
 import Breadcrumbs from '@/app/ui/components/breadcrumbs';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { Box, Button, Card, CardContent, CardHeader } from '@mui/material';
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  Divider,
+  Rating,
+  Typography,
+} from '@mui/material';
 
 export const metadata: Metadata = {
   title: 'Profile',
@@ -10,7 +19,7 @@ export const metadata: Metadata = {
 
 export default async function Page({ params }: { params: { id: string } }) {
   const id = params.id;
-  const [hireById] = await Promise.all([fetchHireById(id)]);
+  const hireById = await fetchHireById(id);
   if (!hireById) {
     notFound();
   }
@@ -47,11 +56,22 @@ export default async function Page({ params }: { params: { id: string } }) {
             src={hireById.image_url}
           />
           <Card className="p-6">
-            <h2 className="text-xl font-bold">{hireById.name}</h2>
-            
+            <Typography variant="h4">{hireById.name}</Typography>
+
             <div className="mt-4">
+              {hireById.external_link !== null && (
+                <Button
+                  variant="outlined"
+                  href={`https://${hireById.external_link}`}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  My Work
+                </Button>
+              )}
+
               <Button
-                href={`mailto:${hireById.email}?subject=[PartyStarters] ${hireById.talent} gig&body=Hi ${hireById.name},%0D%0AAre you available [insert dates] for a gig? I need a ${hireById.talent}`}
+                href={`mailto:${hireById.pseudo_email}?subject=[PartyStarters] ${hireById.talent} gig&body=Hi ${hireById.name},%0D%0AAre you available [insert dates] for a gig? I need a ${hireById.talent}`}
               >
                 Message
               </Button>
@@ -59,12 +79,33 @@ export default async function Page({ params }: { params: { id: string } }) {
           </Card>
         </div>
         <div className="lg:col-span-2">
+          <Card className="mb-3 p-6">
+            <CardContent>
+              <div classNaame="mb-8">
+                <Typography className="mb-4" variant="h4">
+                  Rating
+                </Typography>
+                <Rating
+                  classname="mb-4"
+                  value={hireById.rating}
+                  precision={0.5}
+                  readOnly
+                  size="large"
+                />
+              </div>
+              <Divider classname="mt-4" />
+              <Typography variant="h4" className="mt-6">
+                Reviews
+              </Typography>
+              <Typography variant="body1">"{hireById.bio}"</Typography>
+            </CardContent>
+          </Card>
           <Card className="p-6">
             <CardHeader
-              title={<h2 className="text-xl font-bold">About Me</h2>}
+              title={<Typography variant="h4">About Me</Typography>}
             />
             <CardContent>
-              <p className="mt-6">{hireById.bio}</p>
+              <p>{hireById.bio}</p>
             </CardContent>
           </Card>
         </div>
