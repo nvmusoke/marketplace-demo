@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Search from './search';
 import { auth, signOut } from '@/auth';
 
@@ -12,9 +11,9 @@ export default async function Header() {
   return (
     <header className="flex items-center justify-between bg-gradient-to-r from-blue-500  to-violet-500 p-6 shadow-md">
       <Link href={isLoggedIn ? '/home' : '/'}>
-        <Typography variant="h5" className="ml-2">
+        <h2 className="ml-2">
           TheMove Makers
-        </Typography>
+        </h2>
       </Link>
       <div className="flex items-center space-x-4">
         {!isLoggedIn ? (
