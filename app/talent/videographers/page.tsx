@@ -27,6 +27,7 @@ export default async function Page() {
             image_url: string;
             name: string;
             talent: string;
+            rating: number;
           }) => (
             <ImageListItems hire={hire} key={hire.id} />
           ),

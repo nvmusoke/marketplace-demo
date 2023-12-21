@@ -2,44 +2,44 @@ const { db } = require('@vercel/postgres');
 const { users, talents } = require('../app/lib/placeholder-data.js');
 const bcrypt = require('bcrypt');
 
-// async function seedUsers(client) {
-//   try {
-//     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
-//     // Create the "users" table if it doesn't exist
-//     const createTable = await client.sql`
-//       CREATE TABLE IF NOT EXISTS users (
-//         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-//         name VARCHAR(255) NOT NULL,
-//         email TEXT NOT NULL UNIQUE,
-//         password TEXT NOT NULL
-//       );
-//     `;
+async function seedUsers(client) {
+  try {
+    await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+    // Create the "users" table if it doesn't exist
+    const createTable = await client.sql`
+      CREATE TABLE IF NOT EXISTS users (
+        id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        email TEXT NOT NULL UNIQUE,
+        password TEXT NOT NULL
+      );
+    `;
 
-//     console.log(`Created "users" table`);
+    console.log(`Created "users" table`);
 
-//     // Insert data into the "users" table
-//     const insertedUsers = await Promise.all(
-//       users.map(async (user) => {
-//         const hashedPassword = await bcrypt.hash(user.password, 10);
-//         return client.sql`
-//         INSERT INTO users (id, name, email, password)
-//         VALUES (${user.id}, ${user.name}, ${user.email}, ${hashedPassword})
-//         ON CONFLICT (id) DO NOTHING;
-//       `;
-//       }),
-//     );
+    // Insert data into the "users" table
+    const insertedUsers = await Promise.all(
+      users.map(async (user) => {
+        const hashedPassword = await bcrypt.hash(user.password, 10);
+        return client.sql`
+        INSERT INTO users (id, name, email, password)
+        VALUES (${user.id}, ${user.name}, ${user.email}, ${hashedPassword})
+        ON CONFLICT (id) DO NOTHING;
+      `;
+      }),
+    );
 
-//     console.log(`Seeded ${insertedUsers.length} users`);
+    console.log(`Seeded ${insertedUsers.length} users`);
 
-//     return {
-//       createTable,
-//       users: insertedUsers,
-//     };
-//   } catch (error) {
-//     console.error('Error seeding users:', error);
-//     throw error;
-//   }
-// }
+    return {
+      createTable,
+      users: insertedUsers,
+    };
+  } catch (error) {
+    console.error('Error seeding users:', error);
+    throw error;
+  }
+}
 
 async function seedTalent(client) {
   try {
@@ -51,9 +51,12 @@ async function seedTalent(client) {
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
         email VARCHAR(255) NOT NULL,
+        pseudo_email VARCHAR(255) NOT NULL,
         image_url VARCHAR(255) NOT NULL,
         bio VARCHAR(255) NOT NULL,
-        talent VARCHAR(255) NOT NULL
+        talent VARCHAR(255) NOT NULL,
+        external_link VARCHAR(255),
+        rating DECIMAL(3,1) NOT NULL
       );
     `;
 
@@ -63,8 +66,8 @@ async function seedTalent(client) {
     const insertedTalent = await Promise.all(
       talents.map(
         (talent) => client.sql`
-        INSERT INTO talents (id, name, email, image_url, bio, talent)
-        VALUES (${talent.id}, ${talent.name}, ${talent.email}, ${talent.image_url}, ${talent.bio}, ${talent.talent})
+        INSERT INTO talents (id, name, email, pseudo_email, image_url, bio, talent, external_link, rating)
+        VALUES (${talent.id}, ${talent.name}, ${talent.email}, ${talent.pseudo_email}, ${talent.image_url}, ${talent.bio}, ${talent.talent}, ${talent.external_link}, ${talent.rating})
         ON CONFLICT (id) DO NOTHING;
       `,
       ),
@@ -85,8 +88,7 @@ async function seedTalent(client) {
 async function main() {
   const client = await db.connect();
 
-  // await seedUsers(client);
-
+  await seedUsers(client);
   await seedTalent(client);
 
   await client.end();

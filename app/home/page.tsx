@@ -1,20 +1,18 @@
 import Link from 'next/link';
-import TitleCards from './ui/components/titleCards';
+import TitleCards from '../ui/components/titleCards';
+import Typography from '@mui/material/Typography';
+import { auth } from '@/auth';
 
-export default function Component() {
-  const titles = [
-    { name: 'DJs', popular: true },
-    { name: 'Bartenders', popular: true },
-    { name: 'Videographers', popular: false },
-    { name: 'Photographers', popular: false },
-    { name: 'Dancers', popular: false },
-    { name: 'Musicians', popular: false },
-  ];
+export default async function Component() {
+  const { user } = (await auth()) ?? {};
 
   return (
     <div className="flex min-h-screen flex-col">
-      <main className="flex-1 gap-8 p-6">
-        <div className="grid grid-cols-1 gap-4 pt-40 md:grid-cols-2 lg:grid-cols-3">
+      <main className="flex-1 gap-8 p-8">
+        <Typography variant="h3" className="text-white">
+          {`Welcome Back, ${user?.name}!`}
+        </Typography>
+        <div className="grid grid-cols-1 gap-4 pt-36 md:grid-cols-2 lg:grid-cols-3">
           <TitleCards />
         </div>
       </main>
