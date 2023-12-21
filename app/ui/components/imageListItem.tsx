@@ -17,7 +17,6 @@ export default function ImageListItems({
   };
   isMainPage?: boolean;
 }) {
-  console.log({ hire });
   return (
     <Link href={`/talent/${hire.id}`}>
       <ImageListItem>
@@ -35,7 +34,6 @@ export default function ImageListItems({
             <>
               {isMainPage && <p> {hire.talent}</p>}
               <Rating
-                classname="mb-4"
                 value={hire.rating}
                 precision={0.5}
                 readOnly

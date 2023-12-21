@@ -81,23 +81,22 @@ export default async function Page({ params }: { params: { id: string } }) {
         <div className="lg:col-span-2">
           <Card className="mb-3 p-6">
             <CardContent>
-              <div classNaame="mb-8">
+              <div className="mb-8">
                 <Typography className="mb-4" variant="h4">
                   Rating
                 </Typography>
                 <Rating
-                  classname="mb-4"
                   value={hireById.rating}
                   precision={0.5}
                   readOnly
                   size="large"
                 />
               </div>
-              <Divider classname="mt-4" />
+              <Divider className="mt-4" />
               <Typography variant="h4" className="mt-6">
                 Reviews
               </Typography>
-              <Typography variant="body1">"{hireById.bio}"</Typography>
+              <Typography variant="body1">{`"${hireById.bio}"`}</Typography>
             </CardContent>
           </Card>
           <Card className="p-6">
