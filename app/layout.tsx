@@ -1,5 +1,4 @@
 import '@/app/ui/global.css';
-import { inter } from '@/app/ui/fonts';
 import { Metadata } from 'next';
 import Header from './ui/header';
 
@@ -19,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} ntialiased bg-black`}>
+      <body className="bg-black">
         <Header />
         {children}
       </body>

@@ -5,6 +5,7 @@ import {
   CardContent,
   CardHeader,
   CardMedia,
+  Typography,
 } from '@mui/material';
 import { auth } from '@/auth';
 
@@ -71,7 +72,13 @@ export default async function TitleCards() {
         <CardHeader
           title={
             <div className="flex items-center justify-between">
-              <h4 className="text-white">{title.name}</h4>
+              <Typography
+                variant="h4"
+                className="text-white"
+                sx={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.9)' }}
+              >
+                {title.name}
+              </Typography>
               {title.popular && (
                 <Chip
                   label="Most Searched"
@@ -86,9 +93,13 @@ export default async function TitleCards() {
 
         <CardContent sx={{ position: 'relative' }}>
           <Button className="mt-4" href={`talent/${title.name.toLowerCase()}`}>
-            <p className="text-white">
+            <Typography
+              variant="body1"
+              className="text-white"
+              sx={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.9)' }}
+            >
               {!isLoggedIn ? `Sign In to View ${title.name}` : 'View All'}
-            </p>
+            </Typography>
           </Button>
         </CardContent>
       </Card>
