@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Search from './search';
 import { auth, signOut } from '@/auth';
+import Image from 'next/image';
 
 export default async function Header() {
   const { user } = (await auth()) || {};
@@ -11,9 +12,19 @@ export default async function Header() {
 
   return (
     <header className="flex items-center justify-between bg-gradient-to-r from-blue-500  to-violet-500 p-6 shadow-md">
-      <Link href={isLoggedIn ? '/home' : '/'}>
+      <Link
+        href={isLoggedIn ? '/home' : '/'}
+        className="inline-flex items-center"
+      >
+        <Image
+          src="/theMoveLogo.png"
+          alt="the move makers logo"
+          loading="lazy"
+          width={80}
+          height={80}
+        />
         <Typography variant="h5" className="ml-2">
-          TheMove Makers
+          The Move Makers
         </Typography>
       </Link>
       <div className="flex items-center space-x-4">

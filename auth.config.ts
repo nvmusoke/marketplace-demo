@@ -14,8 +14,12 @@ export const authConfig = {
       if (isonTalentPage) {
         if (isLoggedIn) return true;
         return false; // Redirect unauthenticated users to login page
-      } else if (isLoggedIn && isOnLoginPage) {
-        return Response.redirect(new URL('/home', nextUrl));
+      } else if (isOnLoginPage) {
+        {
+          if (isLoggedIn) {
+            return Response.redirect(new URL('/home', nextUrl));
+          }
+        }
       } else if (isOnHomePage) {
         if (isLoggedIn) return true;
         return false; // Redirect unauthenticated users to login page
