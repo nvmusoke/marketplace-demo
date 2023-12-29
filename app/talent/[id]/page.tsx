@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import {
   Box,
-  Button,
   Card,
   CardContent,
   CardHeader,
@@ -61,19 +60,18 @@ export default async function Page({ params }: { params: { id: string } }) {
 
             <div className="mt-4">
               {hireById.external_link !== null && (
-                <Button
-                  variant="outlined"
+                <Link
                   href={`https://${hireById.external_link}`}
                   rel="noopener noreferrer"
                   target="_blank"
-                  className="mr-4 border-white text-white"
+                  className="mr-4 rounded border border-solid border-white p-2 text-white hover:bg-violet-600  hover:bg-white hover:text-violet-900"
                 >
                   My Work
-                </Button>
+                </Link>
               )}
 
               <Link
-                className="text-white hover:underline"
+                className="rounded border border-solid border-white p-2 text-white hover:bg-white hover:text-violet-900"
                 href={`/talent/${hireById.id}/message`}
               >
                 Message
