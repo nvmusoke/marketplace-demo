@@ -16,7 +16,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     notFound();
   }
   return (
-    <div className="mt-8 grid gap-6 p-10 lg:grid-cols-3">
+    <div className="grid flex-1 gap-6 p-10 lg:grid-cols-3">
       <div className="lg:col-span-1">
         <Breadcrumbs
           breadcrumbs={[

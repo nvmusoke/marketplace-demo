@@ -18,12 +18,12 @@ export default function MessageForm({
   const [bodyError, setBodyError] = useState('');
 
   const validateForm = () => {
-    if (bodyInput.trim() === '') {
-      setBodyError('Message Required');
-      return false;
-    }
     if (subjectInput.trim() === '') {
       setSubjectError('Subject Required');
+      return false;
+    }
+    if (bodyInput.trim() === '') {
+      setBodyError('Message Required');
       return false;
     }
 
@@ -45,13 +45,17 @@ export default function MessageForm({
             Your message has been sent! Responses can take up to 48 hours.
           </p>
           <div>
-            <Link className="mr-4 mt-4 text-white" href={`/talent/${id}`}>
-              <Button variant="outlined" className="text-white">
-                Return to Profile
-              </Button>
+            <Link
+              className="mr-4 mt-4 rounded border border-solid border-white p-2 text-white text-white  hover:bg-white hover:text-violet-900"
+              href={`/talent/${id}`}
+            >
+              Return to Profile
             </Link>
-            <Link className="mt-4 text-white" href={`/talent/${id}`}>
-              <Button variant="outlined">{`Find more ${talent}s`}</Button>
+            <Link
+              className="mt-4 rounded border border-solid border-white p-2 text-white text-white  hover:bg-white hover:text-violet-900"
+              href={`/talent/${id}`}
+            >
+              {`Find more ${talent}s`}
             </Link>
           </div>
         </div>
@@ -61,13 +65,13 @@ export default function MessageForm({
             <div className="w-full">
               <div>
                 <label
-                  className="text-s font-large mb-3 mt-5 block text-gray-900"
+                  className="mb-3 mt-5 block text-lg text-white"
                   htmlFor="subject"
                 >
                   Subject
                 </label>
                 <TextField
-                  className="w-full max-w-xl rounded bg-white"
+                  className="w-full max-w-xl rounded drop-shadow-lg"
                   variant="outlined"
                   id="subject"
                   type="text"
@@ -91,13 +95,13 @@ export default function MessageForm({
               </div>
               <div className="my-4">
                 <label
-                  className="text-s font-large mb-3 mt-5 block text-gray-900"
+                  className="mb-3 mt-5 block text-lg text-white"
                   htmlFor="Message"
                 >
                   Message
                 </label>
                 <TextField
-                  className="w-full rounded bg-white"
+                  className="w-full rounded bg-white ring-transparent drop-shadow-lg"
                   multiline
                   name="body"
                   rows={4}
@@ -107,6 +111,9 @@ export default function MessageForm({
                   onChange={(e) => {
                     setBodyInput(e.target.value);
                     setBodyError(''); // Clear the error message when the user types
+                  }}
+                  sx={{
+                    '& :focus': { '--tw-ring-color': 'none' },
                   }}
                   error={!!bodyError}
                 />
@@ -118,15 +125,14 @@ export default function MessageForm({
                 )}
               </div>
             </div>
-            <Button
-              variant="contained"
-              className="mt-4 bg-violet-600 text-white"
+            <button
+              className="mt-4 rounded border border-solid border-white p-2 text-white text-white  hover:bg-white hover:text-violet-900"
               onClick={() => {
                 handleSubmit();
               }}
             >
               Send Message
-            </Button>
+            </button>
           </Box>
         </form>
       )}
