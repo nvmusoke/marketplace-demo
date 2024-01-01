@@ -1,10 +1,6 @@
-import { fetchHireById, fetchHireByTalent } from '@/app/lib/data';
-import { KeyIcon, ExclamationCircleIcon } from '@heroicons/react/24/outline';
-import { ArrowRightIcon } from '@heroicons/react/20/solid';
-import { useFormState, useFormStatus } from 'react-dom';
-import { authenticate } from '@/app/lib/actions';
+import { fetchHireById } from '@/app/lib/data';
 import { notFound } from 'next/navigation';
-import { Box, TextField } from '@mui/material';
+import { Box } from '@mui/material';
 import MessageForm from '@/app/ui/message-form';
 import Breadcrumbs from '@/app/ui/components/breadcrumbs';
 
@@ -39,7 +35,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         />
       </div>
       <div className="pt-14 lg:col-span-2">
-        <MessageForm id={id} talent={hireById.talent} />
+        <MessageForm />
       </div>
     </div>
   );
