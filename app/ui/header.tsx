@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Search from './search';
 import { auth, signOut } from '@/auth';
