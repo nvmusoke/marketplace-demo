@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ImageListItem, ImageListItemBar } from '@mui/material';
-import { Rating } from '@mui/material';
+import { Rating, Tooltip } from '@mui/material';
 
 export default function ImageListItems({
   hire,
@@ -33,7 +33,11 @@ export default function ImageListItems({
           subtitle={
             <>
               {isMainPage && <p> {hire.talent}</p>}
-              <Rating value={hire.rating} precision={0.5} readOnly />
+              <Tooltip title={hire.rating}>
+                <div className="w-fit">
+                  <Rating value={hire.rating} precision={0.1} readOnly />
+                </div>
+              </Tooltip>
             </>
           }
           position="below"

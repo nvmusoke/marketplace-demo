@@ -1,4 +1,4 @@
-import { fetchHireById, fetchHireByTalent } from '@/app/lib/data';
+import { fetchHireById } from '@/app/lib/data';
 import Breadcrumbs from '@/app/ui/components/breadcrumbs';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -98,10 +98,11 @@ export default async function Page({ params }: { params: { id: string } }) {
                 </Typography>
                 <Rating
                   value={hireById.rating}
-                  precision={0.5}
+                  precision={0.1}
                   readOnly
                   size="large"
                 />
+                <p>{`(${hireById.rating} stars)`}</p>
               </div>
               <Divider className="mt-4" />
               <Typography variant="h4" className="mt-6">

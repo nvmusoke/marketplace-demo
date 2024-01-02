@@ -64,7 +64,6 @@ export async function fetchHireById(id: string) {
       talents.id,
       talents.name,
       talents.email,
-      talents.pseudo_email,
       talents.image_url,
       talents.bio,
       talents.talent,

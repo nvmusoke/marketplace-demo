@@ -4,11 +4,10 @@ import Header from './ui/header';
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Acme Dashboard',
-    default: 'Acme Dashboard',
+    template: '%s | The Move Makers',
+    default: 'The Move Makers',
   },
-  description: 'The official Next.js Learn Dashboard built with App Router.',
-  metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
+  description: 'The top entertainment marketplace',
 };
 
 export default function RootLayout({
